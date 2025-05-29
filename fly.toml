@@ -19,3 +19,8 @@ swap_size_mb = 32768 # 32gb
   cpu_kind = 'performance'
   cpus = 4
   gpu_kind = 'l40s'
+
+[mounts]
+  source = "data"
+  destination = "/data"
+  initial_size = "20gb" # optional - the size of the volume created on first deploy
