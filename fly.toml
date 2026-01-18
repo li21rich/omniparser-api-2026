@@ -25,8 +25,8 @@ swap_size_mb = 2048
 [[vm]]
   size = 'performance-2x'
   cpu_kind = 'performance'
-  gpu_kind = 'l40s'
-  memory = '4gb'
-  memory_mb = 4096
+  gpu_kind = 'a10'
+  memory = '8gb'
+  memory_mb = 8192
   cpus = 2
   gpus = 1
