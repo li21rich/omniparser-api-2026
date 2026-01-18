@@ -1,4 +1,3 @@
-
 # from ultralytics import YOLO
 import os
 import io
@@ -20,15 +19,11 @@ import numpy as np
 from matplotlib import pyplot as plt
 import easyocr
 from paddleocr import PaddleOCR
-
-# GPU-ENABLED: Changed gpu=False to gpu=True for EasyOCR
-reader = easyocr.Reader(['en'], gpu=True)
-
-# GPU-ENABLED: Changed use_gpu=False to use_gpu=True for PaddleOCR
+reader = easyocr.Reader(['en'])
 paddle_ocr = PaddleOCR(
     lang='en',  # other lang also available
     use_angle_cls=False,
-    use_gpu=True,  # CHANGED: Now using GPU instead of CPU!
+    use_gpu=False,  # using cuda will conflict with pytorch in the same process
     show_log=False,
     max_batch_size=1024,
     use_dilation=True,  # improves accuracy
