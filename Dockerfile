@@ -11,8 +11,6 @@ RUN chmod 1777 /tmp \
 RUN pip install --no-cache-dir fastapi[all] transformers==4.38.2 \
     paddleocr==2.10.0 paddlepaddle==3.0.0 torch==2.5.1 torchvision==0.20.1 numpy==1.26.4
 
-# Copy GPU-enabled utils.py to override the CPU version
-COPY utils.py /home/user/app/utils.py
-COPY main.py main.py
 
+COPY main.py main.py
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
