@@ -1,13 +1,21 @@
+# fly.toml app configuration file generated for omniparser-api-calls on 2026-01-16T16:33:49-08:00
+#
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = 'omni-parser-app'
+app = 'omniparser-api-calls'
 primary_region = 'ord'
-swap_size_mb = 32768 # 32gb
+swap_size_mb = 2048
 
 [build]
 
+[[mounts]]
+  source = 'data'
+  destination = '/data'
+  initial_size = '2gb'
+
 [http_service]
-  internal_port = 7860
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'suspend'
   auto_start_machines = true
@@ -15,12 +23,10 @@ swap_size_mb = 32768 # 32gb
   processes = ['app']
 
 [[vm]]
-  memory = '32gb'
+  size = 'performance-1x'
   cpu_kind = 'performance'
-  cpus = 4
   gpu_kind = 'l40s'
-
-[mounts]
-  source = "data"
-  destination = "/data"
-  initial_size = "20gb" # optional - the size of the volume created on first deploy
+  memory = '2gb'
+  memory_mb = 4096
+  cpus = 1
+  gpus = 1
